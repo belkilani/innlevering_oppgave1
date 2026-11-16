@@ -1,7 +1,7 @@
-<?php  /* registrer-poststed */
+<?php  /* registrer-klasser */
 /*
-/*  Programmet lager et html-skjema for å registrere et poststed
-/*  Programmet registrerer data (postnr og poststed) i databasen
+/*  Programmet lager et html-skjema for å registrere klasse
+/*  Programmet registrerer data (Klasse) i databasen
 */
 ?> 
 
