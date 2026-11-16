@@ -41,4 +41,4 @@
               print ("F&oslash;lgende klasse er n&aring; registrert: $Klassekode $Klassenavn $Studiumkode; 
             }
     }
-?> 
+<?php 
