@@ -5,38 +5,40 @@
 */
 ?> 
 
-<h3>Registrer poststed </h3>
+<h3>Registrer klassekode </h3>
 
-<form method="post" action="" id="registrerPoststedSkjema" name="registrerPoststedSkjema">
-  Postnr <input type="text" id="postnr" name="postnr" required /> <br/>
-  Poststed <input type="text" id="poststed" name="poststed" required /> <br/>
-  <input type="submit" value="Registrer poststed" id="registrerPoststedKnapp" name="registrerPoststedKnapp" /> 
+<form method="post" action="" id="registrerKlassekodeSkjema" name="registrerKlassekodeSkjema">
+  Klassekode <input type="text" id="Klassekode" name="Klassekode" required /> <br/>
+  Klassenavn <input type="text" id="Klassenavn" name="Klassenavn" required /> <br/>
+  Studiumkode <input type="text" id="Studiumkode" name="Studiumkode" required /> <br/>
+  <input type="submit" value="Registrer klasse" id="registrerKlasseKnapp" name="registrerKlasseKnapp" /> 
   <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
 </form>
 
 <?php 
-  if (isset($_POST ["registrerPoststedKnapp"]))
+  if (isset($_POST ["registrerKlasseKnapp"]))
     {
-      $postnr=$_POST ["postnr"];
-      $poststed=$_POST ["poststed"];
+      $Klassekode=$_POST ["klasse"];
+      $Klassenavn=$_POST ["klassenavn"];
+      $Studiumkode=$_POST ["studiumkode"];
 
       include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
 
-          $sqlSetning="SELECT * FROM poststed WHERE postnr='$postnr';";
+          $sqlSetning="SELECT * FROM poststed WHERE postnr='$Klassekode';";
           $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
           $antallRader=mysqli_num_rows($sqlResultat); 
 
-          if ($antallRader!=0)  /* poststedet er registrert fra før */
+          if ($antallRader!=0)  /* Klassen er registrert fra før */
             {
-              print ("Poststedet er registrert fra f&oslashr");
+              print ("Klassen er registrert fra f&oslashr");
             }
           else
             {
-              $sqlSetning="INSERT INTO poststed VALUES('$postnr','$poststed');";
+              $sqlSetning="INSERT INTO Klassekode VALUES('$Klassekode','$Klassenavn', '$Studiumkode');";
               mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
                 /* SQL-setning sendt til database-serveren */
 
-              print ("F&oslash;lgende poststed er n&aring; registrert: $postnr $poststed"); 
+              print ("F&oslash;lgende klasse er n&aring; registrert: $Klassekode $Klassenavn $Studiumkode; 
             }
     }
 ?> 
